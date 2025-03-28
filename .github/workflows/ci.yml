@@ -28,8 +28,8 @@ jobs:
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 43b3836c5859b8db878a49562b0200d1
-          filename: tt.json
-          label: "Latest Verified Jetton"
-          message: "123"
+          filename: tt2.json
+          label: Latest Verified Jetton
+          message: ww
           color: green
           namedLogo: ton
