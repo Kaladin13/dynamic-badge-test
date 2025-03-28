@@ -28,7 +28,7 @@ jobs:
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 43b3836c5859b8db878a49562b0200d1
-          filename: latest-jetton.json
+          filename: tt.json
           label: 'Latest Verified Jetton'
           message: |
             $(cat test.txt)
