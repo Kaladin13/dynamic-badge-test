@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run cr
+        run: echo "https://testnet.tonviewer.com/kQAYJ2lUFhRfQJ7uDdrVoxs2sl5bQeyoZBGvAJteaUMjJcw_" > test.txt | cat test.txt
+
+      - name: Create Verification Badge
+        if: success()
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 43b3836c5859b8db878a49562b0200d1
+          filename: tt2.json
+          label: Latest Verified Jetton
+          message: ww
+          color: green
+          namedLogo: ton
