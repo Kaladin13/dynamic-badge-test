@@ -8,5 +8,23 @@
     <div id="deployment-info">
         <p>Loading deployment information...</p>
     </div>
+    <script>
+        function loadDeploymentInfo() {
+            fetch('https://testnet.toncenter.com/api/v3/metadata?address=kQDwtcw5m6PZBV6DmUTDrjgk1dW0neG1nEXyFhqNW81_CHn9')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const deploymentInfoDiv = document.getElementById('deployment-info');
+                    deploymentInfoDiv.innerHTML = `
+                        <p><strong>Address:</strong> ${data["0:F0B5CC399BA3D9055E839944C3AE3824D5D5B49DE1B59C45F2161A8D5BCD7F08"].is_indexed}</p>
+                    `;
+                })
+                .catch(error => {
+                    const deploymentInfoDiv = document.getElementById('deployment-info');
+                    deploymentInfoDiv.innerHTML = `<p>Error loading deployment information.</p>`;
+                });
+        }
+        window.onload = loadDeploymentInfo;
+    </script>
 </body>
 </html>
