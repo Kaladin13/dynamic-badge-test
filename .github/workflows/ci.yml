@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run cr
-        run: echo "https://testnet.tonviewer.com/kQAYJ2lUFhRfQJ7uDdrVoxs2sl5bQeyoZBGvAJteaUMjJcw_" > test.txt
+        run: echo "https://testnet.tonviewer.com/kQAYJ2lUFhRfQJ7uDdrVoxs2sl5bQeyoZBGvAJteaUMjJcw_" > test.txt | cat test.txt
 
       - name: Create Verification Badge
         if: success()
@@ -29,11 +29,7 @@ jobs:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 43b3836c5859b8db878a49562b0200d1
           filename: tt.json
-          label: 'Latest Verified Jetton'
-          message: |
-            $(cat test.txt)
+          label: "Latest Verified Jetton"
+          message: "123"
           color: green
           namedLogo: ton
-
-
-      
